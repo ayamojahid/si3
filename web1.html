@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Mon Amour - Aya & Mahmoud</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hearts {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .photo-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 5px solid white;
+        }
+
+        /* Love Messages */
+        .messages-section {
+            margin: 60px 0;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ff6b6b;
+            transition: all 0.3s ease;
+        }
+
+        .message-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.02);
+        }
+
+        .message-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Counter Section */
+        .counter-section {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 20px 0;
+        }
+
+        /* Animation Section */
+        .animation-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .floating-hearts {
+            font-size: 2rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .floating-hearts span {
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+            margin: 0 10px;
+        }
+
+        .floating-hearts span:nth-child(2n) {
+            animation-delay: 0.5s;
+        }
+
+        .floating-hearts span:nth-child(3n) {
+            animation-delay: 1s;
+        }
+
+        /* Family Section */
+        .family-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .family-member {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .family-member:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1.2rem; }
+            .counter { font-size: 2rem; }
+        }
+
+        /* Secret Message */
+        .secret-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+            z-index: 1000;
+            border: 3px solid #ff6b6b;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="hearts">❤️ ❤️ ❤️</div>
+            <h1>Aya & Mahmoud Elorbany</h1>
+            <div class="subtitle">Morocco ❤️ Egypt - Love Beyond Borders</div>
+        </header>
+
+        <!-- Photo Gallery -->
+        <section class="photo-gallery">
+            <div class="photo-card" onclick="showMessage('first')">
+                <div class="photo-placeholder">👩‍❤️‍👨</div>
+                <h3>Our First Meeting</h3>
+                <p>Click to see my message</p>
+            </div>
+            
+            <div class="photo-card" onclick="showMessage('future')">
+                <div class="photo-placeholder">🏡</div>
+                <h3>Our Future Together</h3>
+                <p>Click to see my dreams</p>
+            </div>
+            
+            <div class="photo-card" onclick="showMessage('family')">
+                <div class="photo-placeholder">👨‍👩‍👧‍👦</div>
+                <h3>With Your Family</h3>
+                <p>Click to see my feelings</p>
+            </div>
+        </section>
+
+        <!-- Love Messages -->
+        <section class="messages-section">
+            <div class="message-card">
+                <h3>💌 To My Egyptian King</h3>
+                <p>"يا حبيبي محمود، كل يوم معك هو هدية من الله. من المغرب إلى مصر، حبنا أقوى من أي حدود. أنت نور حياتي وسبب ابتسامتي."</p>
+                <p>"My dear Mahmoud, every day with you is a gift from God. From Morocco to Egypt, our love is stronger than any borders. You are the light of my life and the reason for my smile."</p>
+            </div>
+
+            <div class="message-card">
+                <h3>🌹 My Promise to You</h3>
+                <p>"أعدك بأن أكون دائمًا بجانبك، أ supportك في كل خطوة، وأحبك أكثر كل يوم. معًا سنبني مستقبلًا جميلًا."</p>
+                <p>"I promise to always be by your side, support you in every step, and love you more each day. Together we will build a beautiful future."</p>
+            </div>
+        </section>
+
+        <!-- Love Counter -->
+        <section class="counter-section">
+            <h2>Every Second I Love You More</h2>
+            <div class="counter" id="loveCounter">0</div>
+            <p>Seconds spent thinking about you</p>
+        </section>
+
+        <!-- Animation Section -->
+        <section class="animation-section">
+            <h2>Our Love Grows Every Day 🌸</h2>
+            <div class="floating-hearts">
+                <span>❤️</span>
+                <span>💕</span>
+                <span>🥰</span>
+                <span>😍</span>
+                <span>💖</span>
+            </div>
+        </section>
+
+        <!-- Family Section -->
+        <section class="family-section">
+            <h2>With Your Wonderful Family 👨‍👩‍👧‍👦</h2>
+            <p>I'm so grateful to have your family in my life. They've welcomed me with open arms and made me feel so loved.</p>
+            
+            <div class="family-grid">
+                <div class="family-member">
+                    <h3>👨‍👩‍👧‍👦 The Elorbany Family</h3>
+                    <p>Thank you for raising such an amazing man and for welcoming me into your beautiful family.</p>
+                </div>
+                
+                <div class="family-member">
+                    <h3>🏡 Future Together</h3>
+                    <p>I dream of the day when our families will be united and we can create beautiful memories together.</p>
+                </div>
+                
+                <div class="family-member">
+                    <h3>🌍 Cultural Harmony</h3>
+                    <p>Moroccan and Egyptian cultures blending together in perfect harmony through our love.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Message -->
+        <section class="message-card" style="text-align: center; background: rgba(255, 107, 107, 0.2);">
+            <h3>💖 Forever Yours</h3>
+            <p>"يا حبيبي محمود، أنت كل شيء أتمناه وأكثر. أشعر بأنني محظوظة لأنني وجدت رجلاً مثلك. أتطلع إلى كل اللحظات الجميلة التي سنعيشها معًا وعائلتنا."</p>
+            <p>"My dear Mahmoud, you are everything I wished for and more. I feel so blessed to have found a man like you. I look forward to all the beautiful moments we will share together with our family."</p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="hearts">❤️ 💕 🥰 😍 💖</div>
+        <p>Made with infinite love by Aya for Mahmoud Elorbany</p>
+        <p>المغرب ومصر - حب لا يعرف الحدود</p>
+    </footer>
+
+    <!-- Secret Message Popup -->
+    <div class="secret-message" id="secretMessage">
+        <span class="close-btn" onclick="closeMessage()">×</span>
+        <div id="messageContent"></div>
+    </div>
+
+    <script>
+        // Love Counter
+        let loveCount = 0;
+        const counterElement = document.getElementById('loveCounter');
+        
+        setInterval(() => {
+            loveCount++;
+            counterElement.textContent = loveCount.toLocaleString();
+        }, 1000);
+
+        // Secret Messages
+        const messages = {
+            first: {
+                title: "💕 Our First Meeting",
+                content: `أتذكر أول مرة تحدثنا فيها وكأنها كانت بالأمس. شعرت فورًا بأن هناك شيئًا خاصًا بيننا. عيناك الجميلة وقلبك الطيب جعلاني أعرف أنك الرجل المناسب لي.<br><br>
+                I remember our first conversation like it was yesterday. I immediately felt there was something special between us. Your beautiful eyes and kind heart made me know you were the right man for me.`
+            },
+            future: {
+                title: "🏡 Our Future Dreams",
+                content: `أتخيل منزلنا المستقبلي مليئًا بالضحك والحب. أرى أطفالنا يلعبون في الحديقة، وعائلتنا تجتمع حول مائدة الطعام. أتطلع إلى كل المغامرات التي سنعيشها معًا.<br><br>
+                I imagine our future home filled with laughter and love. I see our children playing in the garden, our families gathering around the dinner table. I look forward to all the adventures we will have together.`
+            },
+            family: {
+                title: "👨‍👩‍👧‍👦 With Your Family",
+                content: `أشعر بالامتنان الشديد لعائلتك الرائعة. أحب الطريقة التي تهتم بها بأمك وأخواتك، وهذا يخبرني الكثير عن الرجل الرائع الذي أنت عليه.<br><br>
+                I am so grateful for your wonderful family. They welcomed me warmly and made me feel like one of them. I love how you care for your mother and sisters, and that tells me so much about the amazing man you are.`
+            }
+        };
+
+        function showMessage(type) {
+            const message = messages[type];
+            document.getElementById('messageContent').innerHTML = `
+                <h2>${message.title}</h2>
+                <p>${message.content}</p>
+                <div class="hearts" style="margin-top: 20px;">❤️ 💕 🥰</div>
+            `;
+            document.getElementById('secretMessage').style.display = 'block';
+        }
+
+        function closeMessage() {
+            document.getElementById('secretMessage').style.display = 'none';
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add floating animation to all heart elements
+            const hearts = document.querySelectorAll('.hearts');
+            hearts.forEach((heart, index) => {
+                heart.style.animationDelay = (index * 0.5) + 's';
+            });
+
+            // Add click effects to photo cards
+            const cards = document.querySelectorAll('.photo-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-10px)';
+                    }, 150);
+                });
+            });
+        });
+
+        // Auto-show welcome message after 3 seconds
+        setTimeout(() => {
+            showMessage('first');
+        }, 3000);
+    </script>
+</body>
+</html>
